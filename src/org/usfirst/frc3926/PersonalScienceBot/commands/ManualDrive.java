@@ -11,13 +11,23 @@
 
 package org.usfirst.frc3926.PersonalScienceBot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3926.PersonalScienceBot.Robot;
+import org.usfirst.frc3926.PersonalScienceBot.helpers.XboxHelper;
+import org.usfirst.frc3926.PersonalScienceBot.subsystems.DriveTrain;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class  ManualDrive extends Command {
+	DriveTrain driveTrain = Robot.driveTrain;
+	Joystick xbox = Robot.oi.xbox;
+	
+	public static final int
+	XBOX_FWD_AXIS = 1,
+	XBOX_TURN_AXIS = 4;
 
     public ManualDrive() {
         // Use requires() here to declare subsystem dependencies
@@ -33,7 +43,12 @@ public class  ManualDrive extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+	protected void execute() {
+    	double moveVal = XboxHelper.getAxis(1);
+    	double rotateVal = XboxHelper.getAxis(4);
+    	
+    	driveTrain.arcadeDriveOLD(moveVal, rotateVal, true);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -43,10 +58,12 @@ public class  ManualDrive extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	driveTrain.setRawSpeeds(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	driveTrain.setRawSpeeds(0, 0);
     }
 }
