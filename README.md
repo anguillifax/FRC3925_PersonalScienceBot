@@ -1,5 +1,5 @@
 # FRC3925_PersonalScienceBot
-FIRST Robotics Team 3925 code for the practice robot.
+FIRST Robotics Team 3925's code for the practice robot.
 
 
 This is a base project for FRC team 3925's 2015-2016 practice robot. This repository will be cloned whenever a new testing project is started.
