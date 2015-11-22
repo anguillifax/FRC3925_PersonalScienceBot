@@ -12,10 +12,11 @@
 package org.usfirst.frc3926.PersonalScienceBot.subsystems;
 
 import org.usfirst.frc3926.PersonalScienceBot.RobotMap;
-import org.usfirst.frc3926.PersonalScienceBot.commands.*;
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType; import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
+import org.usfirst.frc3926.PersonalScienceBot.commands.ManualDrive;
 
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
