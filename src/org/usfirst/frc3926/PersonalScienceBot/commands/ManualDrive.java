@@ -22,8 +22,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class  ManualDrive extends Command {
-	DriveTrain driveTrain = Robot.driveTrain;
-	Joystick xbox = Robot.oi.xbox;
+	DriveTrain driveTrain;
+	Joystick xbox;
 	
 	public static final int
 	XBOX_FWD_AXIS = 1,
@@ -40,6 +40,8 @@ public class  ManualDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	driveTrain = Robot.driveTrain;
+    	xbox = Robot.oi.xbox;
     }
 
     // Called repeatedly when this Command is scheduled to run
