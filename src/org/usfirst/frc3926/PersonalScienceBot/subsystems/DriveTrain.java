@@ -148,13 +148,13 @@ public class DriveTrain extends Subsystem {
 		
 		double outLeft = left, 
 			outRight = right;
-		double error = encoderLeft.getDistance()-encoderRight.getDistance();
+		double error = encoderLeft.getDistance() - encoderRight.getDistance();
 		SmartDashboard.putNumber("ErrorValue", error);
 		
 		maxError = Math.max(maxError, Math.abs(error));
 		if (maxError == 0) {maxError = 1;}
 		
-		if (driveStraight) { //TODO Improve logic
+		if (driveStraight) {
 			if (error > 0) {
 				outLeft = left - (error / maxError);
 			} else if (error < 0) {

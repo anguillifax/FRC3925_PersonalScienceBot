@@ -23,7 +23,7 @@ public class Pivot extends Command {
 	final double ROBOT_WIDTH = 30; //in INCHES
 	final double TOLERANCE = 2; //in DEGREES
 	final double startAngle = ahrs.getYaw();
-	final double startTime = timer.getFPGATimestamp(); //in SECONDS
+	final double startTime = Timer.getFPGATimestamp(); //in SECONDS
 	final double startLeft = driveTrain.getLeftEncoderDist();
 	final double startRight = driveTrain.getRightEncoderDist();
 	double targetAngle, currentAngle; //in DEGREES, targetAngle is relative
@@ -58,13 +58,13 @@ public class Pivot extends Command {
 		arcLengthRight = (Math.PI*(radius + (ROBOT_WIDTH/2))*2) * (targetAngle/360);
 		
 		currentAngle = ahrs.getYaw();
-		currentTime = timer.getFPGATimestamp();
+		currentTime = Timer.getFPGATimestamp();
 	}
 
 	@Override
 	protected void execute() {
 		currentAngle = ahrs.getYaw();
-		currentTime = timer.getFPGATimestamp();
+		currentTime = Timer.getFPGATimestamp();
 		currentDistLeft = driveTrain.getLeftEncoderDist();
 		currentDistRight = driveTrain.getRightEncoderDist();
 		
