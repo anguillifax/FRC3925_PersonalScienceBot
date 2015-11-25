@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	Command manualDrive;
 
-	AHRS ahrs;
+	public static AHRS ahrs;
 	
 
 	public static OI oi;
