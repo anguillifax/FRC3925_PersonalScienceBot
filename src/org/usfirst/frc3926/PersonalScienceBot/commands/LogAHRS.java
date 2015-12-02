@@ -141,12 +141,12 @@ public class LogAHRS extends Command {
 		pressure = new ArrayList<>();
 		barometricPressure = new ArrayList<>();
 		
-		prevTime = timer.getFPGATimestamp();
+		prevTime = Timer.getFPGATimestamp();
 	}
 
 	@Override
 	protected void execute() {
-		if (timer.getFPGATimestamp() - SAMPLE_GAP <= prevTime) {
+		if (Timer.getFPGATimestamp() - SAMPLE_GAP <= prevTime) {
 			compassHeading.add(ahrs.getCompassHeading());
 			
 			yaw.add(ahrs.getYaw());
@@ -191,7 +191,7 @@ public class LogAHRS extends Command {
 			barometricPressure.add(ahrs.getBarometricPressure());
 			pressure.add(ahrs.getPressure());
 			
-			prevTime = timer.getFPGATimestamp();
+			prevTime = Timer.getFPGATimestamp();
 		}
 		
 		SmartDashboard.putNumber("Processed Yaw", ahrs.getYaw());

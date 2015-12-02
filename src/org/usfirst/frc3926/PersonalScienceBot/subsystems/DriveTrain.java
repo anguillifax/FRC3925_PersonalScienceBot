@@ -68,6 +68,9 @@ public class DriveTrain extends Subsystem {
 		SmartDashboard.putNumber("LeftMotorSpeed", motorLeft.get());
 		SmartDashboard.putNumber("RightMotorSpeed", motorRight.get());
 		
+		SmartDashboard.putNumber("LeftEncoderDistance", encoderLeft.getDistance());
+		SmartDashboard.putNumber("RightEncoderDistance", encoderRight.getDistance());
+		
 		SmartDashboard.putBoolean("DriveStraight", driveStraight);
 		
 		SmartDashboard.putNumber("MaxError", maxError);

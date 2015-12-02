@@ -20,12 +20,12 @@ public class Pivot extends Command {
 	AHRS ahrs = Robot.ahrs;
 	Timer timer = new Timer();
 	
-	final double ROBOT_WIDTH = 30; //in INCHES
+	final double ROBOT_WIDTH = 26; //in INCHES
 	final double TOLERANCE = 2; //in DEGREES
-	final double startAngle = ahrs.getYaw();
-	final double startTime = Timer.getFPGATimestamp(); //in SECONDS
-	final double startLeft = driveTrain.getLeftEncoderDist();
-	final double startRight = driveTrain.getRightEncoderDist();
+	double startAngle = 0;
+	double startTime = 0; //in SECONDS
+	double startLeft = 0;
+	double startRight = 0;
 	double targetAngle, currentAngle; //in DEGREES, targetAngle is relative
 	double targetTime, currentTime; //in SECONDS
 	double arcLengthLeft, arcLengthRight; //in INCHES
@@ -35,7 +35,7 @@ public class Pivot extends Command {
 	double slowDownPoint; //in DEGREES
 	
 	public Pivot () {
-		
+		requires(driveTrain);
 	}
 	
 	public Pivot (double targetAngle, double time, double radius, double slowDownPoint) {
@@ -48,6 +48,11 @@ public class Pivot extends Command {
 	
 	@Override
 	protected void initialize() {
+		startAngle = ahrs.getYaw();
+		startTime = Timer.getFPGATimestamp();
+		startLeft = driveTrain.getLeftEncoderDist();
+		startRight = driveTrain.getRightEncoderDist();
+		
 		if (targetAngle < 0) 
 			radius = Math.min(radius, -radius);
 		if (targetAngle > 0) 
@@ -81,6 +86,8 @@ public class Pivot extends Command {
 		//(distError/slowDownPoint) is proportional control for error correction
 		leftSpeed = Math.min(1, ((arcLengthLeft - currentDistLeft)/slowDownPoint) + (leftDistError/slowDownPoint));
 		rightSpeed = Math.min(1, ((arcLengthRight - currentDistRight)/slowDownPoint) + (rightDistError/slowDownPoint));
+		
+		driveTrain.setRawSpeeds(leftSpeed, rightSpeed);
 		
 		SmartDashboard.putNumber("Pivot Angle", targetAngle);
 		SmartDashboard.putNumber("Pivot Radius", radius);

@@ -23,8 +23,8 @@ public class XboxHelper {
 	AXIS_LEFT_X = 2,
 	AXIS_RIGHT_Y = 3,
 	AXIS_RIGHT_X = 4,
-	TRIGGER_LEFT = 5,
-	TRIGGER_RIGHT = 6;
+	AXIS_TRIGGER_LEFT = 5,
+	AXIS_TRIGGER_RIGHT = 6;
 	
 	
 	private static Joystick xbox;
