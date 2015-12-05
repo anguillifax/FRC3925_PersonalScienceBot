@@ -149,22 +149,23 @@ public class DriveTrain extends Subsystem {
 			driveStraight = false;
 		}
 		
-		double outLeft = left, 
-			outRight = right;
-		double error = encoderLeft.getDistance() - encoderRight.getDistance();
-		SmartDashboard.putNumber("ErrorValue", error);
-		
-		maxError = Math.max(maxError, Math.abs(error));
-		if (maxError == 0) {maxError = 1;}
-		
-		if (driveStraight) {
-			if (error > 0) {
-				outLeft = left - (error / maxError);
-			} else if (error < 0) {
-				outRight = right - (error / maxError);
-			}
-			
-		}
+		double
+		outLeft = left, 
+		outRight = right;
+//		double error = encoderLeft.getDistance() - encoderRight.getDistance();
+//		SmartDashboard.putNumber("ErrorValue", error);
+//		
+//		maxError = Math.max(maxError, Math.abs(error));
+//		if (maxError == 0) {maxError = 1;}
+//		
+//		if (driveStraight) {
+//			if (error > 0) {
+//				outLeft = left - (error / maxError);
+//			} else if (error < 0) {
+//				outRight = right - (error / maxError);
+//			}
+//			
+//		}
 			robotDrive.setLeftRightMotorOutputs(limit(outLeft), limit(outRight));
 		
 	}

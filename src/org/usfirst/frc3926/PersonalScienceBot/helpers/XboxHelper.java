@@ -39,4 +39,8 @@ public class XboxHelper {
 		return Math.abs(xbox.getRawAxis(axis)) > Constants.JOYSTICK_DEADZONE ? xbox.getRawAxis(axis) : 0;
 	}
 	
+	public static Joystick getXbox() {
+		return xbox;
+	}
+	
 }

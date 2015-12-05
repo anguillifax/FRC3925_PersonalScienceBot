@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Pivot extends Command {
 
 	DriveTrain driveTrain = Robot.driveTrain;
-	AHRS ahrs = Robot.ahrs;
+	AHRS ahrs = Robot.navx;
 	Timer timer = new Timer();
 	
 	final double ROBOT_WIDTH = 26; //in INCHES

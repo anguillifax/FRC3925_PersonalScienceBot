@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class LogAHRS extends Command {
 	
-	AHRS ahrs = Robot.ahrs;
+	AHRS ahrs = Robot.navx;
 	Timer timer;
 	File logFolder;
 	File logFile;
