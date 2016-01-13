@@ -11,13 +11,23 @@
 
 package org.usfirst.frc3926.PersonalScienceBot.commands;
 
+import org.usfirst.frc3926.PersonalScienceBot.Robot;
+import org.usfirst.frc3926.PersonalScienceBot.subsystems.DriveTrain;
+
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class  AutonomousCommand extends Command {
-
+	protected double startAngle = 0;
+	protected final double startTime = Timer.getFPGATimestamp();
+	AHRS navx;
+	DriveTrain driveTrain;
     public AutonomousCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -28,10 +38,25 @@ public class  AutonomousCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	navx = Robot.navx;
+    	driveTrain = Robot.driveTrain;
+    	startAngle = navx.getAngle();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	while (getTime() < startTime + 1) {
+    		driveTrain.setRawSpeeds(.1d, .3d);
+		}
+    	
+    	SmartDashboard.putNumber("FPGA_Timestamp", Timer.getFPGATimestamp());
+    	SmartDashboard.putNumber("StartTime", startTime);
+    	SmartDashboard.putNumber("GetTime", getTime());
+    	
+    }
+    
+    protected double getTime() {
+    	return startTime + Timer.getFPGATimestamp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
