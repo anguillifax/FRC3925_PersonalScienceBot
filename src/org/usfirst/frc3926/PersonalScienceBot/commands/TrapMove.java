@@ -25,10 +25,10 @@ public class TrapMove extends Command {
 	double outSpeed, curSpeed, acceleration, curTime, curPos;
 	double calcCurDist, calcCurVel;
 	
-	CurrentPhase curPhase = CurrentPhase.PLATEAU;
+	CurPhase curPhase = CurPhase.PLATEAU;
 	
-	private enum CurrentPhase {
-		ACCELERATING, PLATEAU, DECELERATING;
+	private enum CurPhase {
+		ACCEL, PLATEAU, DECEL;
 	}
 
     public TrapMove() {
